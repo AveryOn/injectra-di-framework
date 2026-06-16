@@ -1,3 +1,3 @@
-# Engineering Lab Template
+# Injectra DI Framework
 
-#### Template repository for engineering laboratories. Provides a structured workflow for managing tasks, experiments, research, implementations, roadmaps, and qualification progress across technical domains.
+#### A custom dependency injection framework for Node.js and TypeScript, covering explicit providers, decorator-based registration, tokens, scopes, singleton and transient lifecycles, dependency graph resolution, circular dependency detection, and container testing.
