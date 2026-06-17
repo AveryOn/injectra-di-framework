@@ -1,1723 +1,1723 @@
 # Injectra DI Framework Roadmap
 
-## 1. Основы Dependency Injection и Inversion of Control
+## 1. Dependency Injection and Inversion of Control Fundamentals
 
-### 001. Исследовать Dependency Injection
+### 001. Research Dependency Injection
 
-Разобрать передачу зависимостей извне вместо их создания внутри dependent class.
+Examine passing dependencies from the outside instead of creating them inside the dependent class.
 
-### 002. Исследовать Inversion of Control
+### 002. Research Inversion of Control
 
-Определить роль container как механизма управления созданием и связыванием объектов.
+Define the role of the container as a mechanism for managing object creation and wiring.
 
-### 003. Разделить Dependency Injection и Service Locator
+### 003. Separate Dependency Injection and Service Locator
 
-Зафиксировать различия между явным constructor injection и скрытым получением dependencies из container.
+Record the differences between explicit constructor injection and hidden retrieval of dependencies from the container.
 
-### 004. Исследовать Constructor Injection
+### 004. Research Constructor Injection
 
-Разобрать преимущества обязательных зависимостей, immutable references и тестируемости.
+Examine the advantages of required dependencies, immutable references, and testability.
 
-### 005. Исследовать Property Injection
+### 005. Research Property Injection
 
-Определить ограничения optional dependencies и частично инициализированных объектов.
+Define the limitations of optional dependencies and partially initialized objects.
 
-### 006. Исследовать Method Injection
+### 006. Research Method Injection
 
-Разобрать передачу contextual dependency только в момент вызова operation.
+Examine passing a contextual dependency only at the moment an operation is called.
 
-### 007. Исследовать Interface Injection
+### 007. Research Interface Injection
 
-Рассмотреть pattern и причины его редкого использования в TypeScript.
+Consider the pattern and the reasons for its rare use in TypeScript.
 
-### 008. Исследовать Composition Root
+### 008. Research Composition Root
 
-Определить единственное место сборки object graph приложения.
+Define the single place where the application's object graph is assembled.
 
-### 009. Исследовать Dependency Inversion Principle
+### 009. Research Dependency Inversion Principle
 
-Зафиксировать зависимость high-level modules от abstractions, а не concrete implementations.
+Record the dependency of high-level modules on abstractions rather than concrete implementations.
 
-### 010. Исследовать Pure DI
+### 010. Research Pure DI
 
-Собрать object graph вручную без runtime container и сравнить подходы.
+Assemble the object graph manually without a runtime container and compare the approaches.
 
-### 011. Исследовать Runtime DI Container
+### 011. Research Runtime DI Container
 
-Определить преимущества dynamic registration, scopes, modules и graph diagnostics.
+Define the advantages of dynamic registration, scopes, modules, and graph diagnostics.
 
-### 012. Исследовать Compile-time DI
+### 012. Research Compile-time DI
 
-Сравнить runtime reflection с generated factories и static dependency graphs.
+Compare runtime reflection with generated factories and static dependency graphs.
 
-### 013. Исследовать Explicit DI
+### 013. Research Explicit DI
 
-Разобрать регистрацию dependencies через configuration objects и factory functions.
+Examine dependency registration through configuration objects and factory functions.
 
-### 014. Исследовать Decorator-based DI
+### 014. Research Decorator-based DI
 
-Разобрать metadata-driven registration и constructor parameter resolution.
+Examine metadata-driven registration and constructor parameter resolution.
 
-### 015. Исследовать TypeScript runtime types
+### 015. Research TypeScript Runtime Types
 
-Зафиксировать, какие type annotations исчезают после compilation.
+Record which type annotations disappear after compilation.
 
-### 016. Исследовать token-based resolution
+### 016. Research Token-based Resolution
 
-Определить необходимость runtime tokens для interfaces и abstract dependencies.
+Define the need for runtime tokens for interfaces and abstract dependencies.
 
-### 017. Исследовать object lifecycle
+### 017. Research Object Lifecycle
 
-Разобрать создание, кэширование, использование и disposal экземпляров.
+Examine instance creation, caching, use, and disposal.
 
-### 018. Исследовать dependency scopes
+### 018. Research Dependency Scopes
 
-Сравнить singleton, transient, request и custom scopes.
+Compare singleton, transient, request, and custom scopes.
 
-### 019. Исследовать dependency graph
+### 019. Research Dependency Graph
 
-Определить nodes, directed edges, roots, cycles и topological order.
+Define nodes, directed edges, roots, cycles, and topological order.
 
-### 020. Зафиксировать гарантии Injectra
+### 020. Record Injectra Guarantees
 
-Документировать registration semantics, resolution rules, lifecycle и error behavior framework.
+Document the framework's registration semantics, resolution rules, lifecycle, and error behavior.
 
-## 2. Структура репозитория и базовые инструменты
+## 2. Repository Structure and Core Tooling
 
-### 021. Создать структуру monorepo
+### 021. Create Monorepo Structure
 
-Разделить core framework, decorators, integrations, testing utilities, examples и benchmarks.
+Separate the core framework, decorators, integrations, testing utilities, examples, and benchmarks.
 
-### 022. Создать package `@injectra/core`
+### 022. Create Package `@injectra/core`
 
-Разместить container, providers, scopes, tokens и graph resolution.
+Place the container, providers, scopes, tokens, and graph resolution there.
 
-### 023. Создать package `@injectra/decorators`
+### 023. Create Package `@injectra/decorators`
 
-Разместить decorator API и metadata helpers.
+Place the decorator API and metadata helpers there.
 
-### 024. Создать package `@injectra/testing`
+### 024. Create Package `@injectra/testing`
 
-Разместить test container, overrides, spies и graph assertions.
+Place the test container, overrides, spies, and graph assertions there.
 
-### 025. Создать package `@injectra/node`
+### 025. Create Package `@injectra/node`
 
-Разместить Node.js-specific lifecycle и AsyncLocalStorage integrations.
+Place Node.js-specific lifecycle and AsyncLocalStorage integrations there.
 
-### 026. Создать package `@injectra/express`
+### 026. Create Package `@injectra/express`
 
-Добавить request-scope integration с Express.
+Add request-scope integration with Express.
 
-### 027. Создать package `@injectra/nest-bridge`
+### 027. Create Package `@injectra/nest-bridge`
 
-Подготовить экспериментальную интеграцию с NestJS providers.
+Prepare an experimental integration with NestJS providers.
 
-### 028. Создать package `@injectra/benchmarks`
+### 028. Create Package `@injectra/benchmarks`
 
-Разместить startup, registration и resolution benchmarks.
+Place startup, registration, and resolution benchmarks there.
 
-### 029. Настроить TypeScript strict mode
+### 029. Configure TypeScript Strict Mode
 
-Включить строгую проверку типов, nullability и generic constraints.
+Enable strict type checking, nullability, and generic constraints.
 
-### 030. Настроить ESM
+### 030. Configure ESM
 
-Использовать Node.js ESM и проверить package exports.
+Use Node.js ESM and verify package exports.
 
-### 031. Подготовить CommonJS compatibility
+### 031. Prepare CommonJS Compatibility
 
-Определить необходимость dual package или отдельного compatibility build.
+Determine the need for a dual package or a separate compatibility build.
 
-### 032. Настроить project references
+### 032. Configure Project References
 
-Разделить compilation packages и ускорить incremental builds.
+Separate package compilation and accelerate incremental builds.
 
-### 033. Настроить package exports
+### 033. Configure Package Exports
 
-Экспортировать только публичные API и запретить deep imports.
+Export only public APIs and prohibit deep imports.
 
-### 034. Настроить declaration generation
+### 034. Configure Declaration Generation
 
-Генерировать `.d.ts` для всех public packages.
+Generate `.d.ts` files for all public packages.
 
-### 035. Настроить source maps
+### 035. Configure Source Maps
 
-Обеспечить корректные stack traces внутри framework.
+Ensure correct stack traces inside the framework.
 
-### 036. Настроить ESLint
+### 036. Configure ESLint
 
-Добавить правила для unsafe reflection, promises и public API boundaries.
+Add rules for unsafe reflection, promises, and public API boundaries.
 
-### 037. Настроить Prettier
+### 037. Configure Prettier
 
-Обеспечить единое форматирование source code и documentation.
+Ensure consistent formatting of source code and documentation.
 
-### 038. Настроить test runner
+### 038. Configure Test Runner
 
-Подключить Vitest или Node.js Test Runner для unit и integration tests.
+Connect Vitest or Node.js Test Runner for unit and integration tests.
 
-### 039. Настроить coverage
+### 039. Configure Coverage
 
-Собирать branch coverage для resolution и lifecycle paths.
+Collect branch coverage for resolution and lifecycle paths.
 
-### 040. Создать public API compatibility check
+### 040. Create Public API Compatibility Check
 
-Обнаруживать случайные breaking changes exported types и functions.
+Detect accidental breaking changes in exported types and functions.
 
-## 3. Базовая модель token
+## 3. Basic Token Model
 
-### 041. Определить тип Token
+### 041. Define Token Type
 
-Поддержать class constructors, symbols, strings и typed token objects.
+Support class constructors, symbols, strings, and typed token objects.
 
-### 042. Реализовать class token
+### 042. Implement Class Token
 
-Использовать constructor function как runtime identifier dependency.
+Use a constructor function as a runtime dependency identifier.
 
-### 043. Реализовать symbol token
+### 043. Implement Symbol Token
 
-Поддержать interfaces и abstractions через уникальные symbols.
+Support interfaces and abstractions through unique symbols.
 
-### 044. Реализовать string token
+### 044. Implement String Token
 
-Добавить compatibility mode с явным предупреждением о collision risk.
+Add a compatibility mode with an explicit warning about collision risk.
 
-### 045. Реализовать typed InjectionToken
+### 045. Implement Typed InjectionToken
 
-Создать generic token, сохраняющий compile-time тип dependency.
+Create a generic token that preserves the dependency's compile-time type.
 
-### 046. Добавить token description
+### 046. Add Token Description
 
-Использовать readable description в errors и diagnostics.
+Use a readable description in errors and diagnostics.
 
-### 047. Добавить token identity
+### 047. Add Token Identity
 
-Гарантировать сравнение tokens по identity, а не только по description.
+Guarantee token comparison by identity, not only by description.
 
-### 048. Создать helper `createToken`
+### 048. Create Helper `createToken`
 
-Упростить создание typed runtime token.
+Simplify creation of a typed runtime token.
 
-### 049. Создать helper `isToken`
+### 049. Create Helper `isToken`
 
-Проверять допустимость значения как Injectra token.
+Check whether a value is valid as an Injectra token.
 
-### 050. Реализовать token serialization
+### 050. Implement Token Serialization
 
-Создать безопасное diagnostic representation без изменения identity.
+Create a safe diagnostic representation without changing identity.
 
-### 051. Реализовать global token registry
+### 051. Implement Global Token Registry
 
-Исследовать optional registry для interoperability между package copies.
+Research an optional registry for interoperability between package copies.
 
-### 052. Проверить duplicate package problem
+### 052. Check Duplicate Package Problem
 
-Определить поведение token classes при нескольких версиях Injectra в dependency tree.
+Define the behavior of token classes when multiple Injectra versions exist in the dependency tree.
 
-### 053. Реализовать namespaced token
+### 053. Implement Namespaced Token
 
-Добавить namespace для library и application-level tokens.
+Add a namespace for library-level and application-level tokens.
 
-### 054. Реализовать token aliases
+### 054. Implement Token Aliases
 
-Позволить нескольким tokens ссылаться на один provider.
+Allow multiple tokens to reference one provider.
 
-### 055. Обнаруживать alias cycles
+### 055. Detect Alias Cycles
 
-Запрещать A → B → A и более длинные alias loops.
+Prohibit A → B → A and longer alias loops.
 
-### 056. Реализовать multi-token
+### 056. Implement Multi-token
 
-Поддержать получение коллекции implementations для одного contract.
+Support obtaining a collection of implementations for one contract.
 
-### 057. Определить ordering multi-providers
+### 057. Define Multi-provider Ordering
 
-Зафиксировать порядок регистрации и optional priority.
+Record registration order and optional priority.
 
-### 058. Реализовать optional token wrapper
+### 058. Implement Optional Token Wrapper
 
-Представлять необязательную dependency без смешивания с `undefined` provider value.
+Represent an optional dependency without mixing it with an `undefined` provider value.
 
-### 059. Реализовать lazy token wrapper
+### 059. Implement Lazy Token Wrapper
 
-Представлять dependency, разрешаемую при первом обращении.
+Represent a dependency resolved on first access.
 
-### 060. Тестировать token identity
+### 060. Test Token Identity
 
-Проверить symbols, classes, strings, aliases и duplicate descriptions.
+Verify symbols, classes, strings, aliases, and duplicate descriptions.
 
-## 4. Provider model
+## 4. Provider Model
 
-### 061. Определить Provider union
+### 061. Define Provider Union
 
-Объединить class, value, factory, existing и multi-provider configurations.
+Combine class, value, factory, existing, and multi-provider configurations.
 
-### 062. Реализовать ClassProvider
+### 062. Implement ClassProvider
 
-Создавать instance указанного class constructor.
+Create an instance of the specified class constructor.
 
-### 063. Реализовать ValueProvider
+### 063. Implement ValueProvider
 
-Возвращать заранее созданное значение без дополнительного lifecycle.
+Return a pre-created value without an additional lifecycle.
 
-### 064. Реализовать FactoryProvider
+### 064. Implement FactoryProvider
 
-Создавать dependency через user-defined factory function.
+Create a dependency through a user-defined factory function.
 
-### 065. Реализовать ExistingProvider
+### 065. Implement ExistingProvider
 
-Связывать token с другим уже зарегистрированным provider.
+Bind a token to another already registered provider.
 
-### 066. Реализовать ConstructorProvider
+### 066. Implement ConstructorProvider
 
-Позволить зарегистрировать class напрямую без wrapper object.
+Allow a class to be registered directly without a wrapper object.
 
-### 067. Реализовать AsyncFactoryProvider
+### 067. Implement AsyncFactoryProvider
 
-Поддержать factory, возвращающую Promise.
+Support a factory that returns a Promise.
 
-### 068. Реализовать ConditionalProvider
+### 068. Implement ConditionalProvider
 
-Выбирать implementation на основании environment или configuration.
+Select an implementation based on environment or configuration.
 
-### 069. Реализовать MultiProvider
+### 069. Implement MultiProvider
 
-Добавлять implementation в коллекцию одного token.
+Add an implementation to the collection of one token.
 
-### 070. Реализовать provider dependencies
+### 070. Implement Provider Dependencies
 
-Позволить factory явно объявлять список injected tokens.
+Allow a factory to explicitly declare a list of injected tokens.
 
-### 071. Реализовать optional factory dependencies
+### 071. Implement Optional Factory Dependencies
 
-Передавать `undefined` или default value при отсутствии optional provider.
+Pass `undefined` or a default value when an optional provider is absent.
 
-### 072. Реализовать lazy factory dependencies
+### 072. Implement Lazy Factory Dependencies
 
-Передавать resolver function вместо готового instance.
+Pass a resolver function instead of a ready instance.
 
-### 073. Реализовать provider scope
+### 073. Implement Provider Scope
 
-Назначать singleton, transient, request или custom scope.
+Assign singleton, transient, request, or custom scope.
 
-### 074. Реализовать eager provider flag
+### 074. Implement Eager Provider Flag
 
-Создавать provider во время container bootstrap.
+Create the provider during container bootstrap.
 
-### 075. Реализовать provider metadata
+### 075. Implement Provider Metadata
 
-Хранить name, source module, tags и diagnostic information.
+Store name, source module, tags, and diagnostic information.
 
-### 076. Реализовать provider priority
+### 076. Implement Provider Priority
 
-Определить выбор implementation при нескольких candidate registrations.
+Define implementation selection when multiple candidate registrations exist.
 
-### 077. Реализовать provider visibility
+### 077. Implement Provider Visibility
 
-Ограничивать provider public, module-private или container-local scope.
+Limit the provider to public, module-private, or container-local scope.
 
-### 078. Реализовать provider override flag
+### 078. Implement Provider Override Flag
 
-Разрешать явное замещение существующей регистрации.
+Allow explicit replacement of an existing registration.
 
-### 079. Реализовать provider normalization
+### 079. Implement Provider Normalization
 
-Преобразовывать все public provider forms в единый internal descriptor.
+Transform all public provider forms into a single internal descriptor.
 
-### 080. Тестировать provider normalization
+### 080. Test Provider Normalization
 
-Проверить class, value, factory, alias, async и multi registrations.
+Verify class, value, factory, alias, async, and multi registrations.
 
 ## 5. Container API
 
-### 081. Спроектировать Container class
+### 081. Design Container Class
 
-Определить registry, caches, scopes, parent reference и lifecycle state.
+Define registry, caches, scopes, parent reference, and lifecycle state.
 
-### 082. Реализовать `register`
+### 082. Implement `register`
 
-Добавлять один или несколько providers.
+Add one or more providers.
 
-### 083. Реализовать `registerMany`
+### 083. Implement `registerMany`
 
-Выполнять batch registration с atomic validation.
+Perform batch registration with atomic validation.
 
-### 084. Реализовать `has`
+### 084. Implement `has`
 
-Проверять наличие local или inherited provider.
+Check for a local or inherited provider.
 
-### 085. Реализовать `resolve`
+### 085. Implement `resolve`
 
-Получать synchronous dependency по token.
+Obtain a synchronous dependency by token.
 
-### 086. Реализовать `resolveAsync`
+### 086. Implement `resolveAsync`
 
-Получать dependency с поддержкой asynchronous providers.
+Obtain a dependency with support for asynchronous providers.
 
-### 087. Реализовать `resolveAll`
+### 087. Implement `resolveAll`
 
-Получать все providers multi-token.
+Obtain all providers of a multi-token.
 
-### 088. Реализовать `tryResolve`
+### 088. Implement `tryResolve`
 
-Возвращать result без exception для отсутствующего optional provider.
+Return a result without an exception for a missing optional provider.
 
-### 089. Реализовать `create`
+### 089. Implement `create`
 
-Создавать незарегистрированный class с разрешением его dependencies.
+Create an unregistered class with resolution of its dependencies.
 
-### 090. Реализовать `override`
+### 090. Implement `override`
 
-Явно заменять provider в test или child container.
+Explicitly replace a provider in a test or child container.
 
-### 091. Реализовать `remove`
+### 091. Implement `remove`
 
-Удалять регистрацию до начала resolution lifecycle.
+Remove a registration before the resolution lifecycle begins.
 
-### 092. Реализовать `clear`
+### 092. Implement `clear`
 
-Очищать registry и caches в контролируемом состоянии.
+Clear the registry and caches in a controlled state.
 
-### 093. Реализовать `freeze`
+### 093. Implement `freeze`
 
-Запрещать изменение registrations после bootstrap.
+Prohibit changing registrations after bootstrap.
 
-### 094. Реализовать `isFrozen`
+### 094. Implement `isFrozen`
 
-Проверять возможность последующей registration.
+Check whether subsequent registration is possible.
 
-### 095. Реализовать `dispose`
+### 095. Implement `dispose`
 
-Освобождать созданные disposable instances.
+Release created disposable instances.
 
-### 096. Реализовать `reset`
+### 096. Implement `reset`
 
-Очищать instances, сохраняя provider registrations.
+Clear instances while preserving provider registrations.
 
-### 097. Реализовать container state machine
+### 097. Implement Container State Machine
 
-Поддержать configuring, bootstrapping, ready, disposing и disposed states.
+Support configuring, bootstrapping, ready, disposing, and disposed states.
 
-### 098. Запретить resolution после disposal
+### 098. Prohibit Resolution After Disposal
 
-Возвращать отдельную lifecycle error.
+Return a separate lifecycle error.
 
-### 099. Запретить registration после freeze
+### 099. Prohibit Registration After Freeze
 
-Возвращать deterministic configuration error.
+Return a deterministic configuration error.
 
-### 100. Создать ContainerBuilder
+### 100. Create ContainerBuilder
 
-Добавить fluent API для composition root без изменения runtime container API.
+Add a fluent API for the composition root without changing the runtime container API.
 
-## 6. Dependency graph resolution
+## 6. Dependency Graph Resolution
 
-### 101. Спроектировать internal provider registry
+### 101. Design Internal Provider Registry
 
-Использовать token-indexed structure с поддержкой aliases и multi-providers.
+Use a token-indexed structure with support for aliases and multi-providers.
 
-### 102. Спроектировать resolution context
+### 102. Design Resolution Context
 
-Хранить текущий path, scope, cache и diagnostic metadata.
+Store the current path, scope, cache, and diagnostic metadata.
 
-### 103. Реализовать recursive resolution
+### 103. Implement Recursive Resolution
 
-Разрешать dependencies depth-first через provider graph.
+Resolve dependencies depth-first through the provider graph.
 
-### 104. Реализовать iterative resolution experiment
+### 104. Implement Iterative Resolution Experiment
 
-Сравнить recursive и explicit-stack algorithms.
+Compare recursive and explicit-stack algorithms.
 
-### 105. Строить resolution path
+### 105. Build Resolution Path
 
-Сохранять последовательность tokens от root до текущей dependency.
+Store the sequence of tokens from the root to the current dependency.
 
-### 106. Обнаруживать отсутствующий provider
+### 106. Detect Missing Provider
 
-Возвращать ошибку с полным dependency path.
+Return an error with the full dependency path.
 
-### 107. Обнаруживать circular dependency
+### 107. Detect Circular Dependency
 
-Проверять повторное появление token в active resolution stack.
+Check for the repeated appearance of a token in the active resolution stack.
 
-### 108. Формировать cycle path
+### 108. Build Cycle Path
 
-Показывать `A → B → C → A` в error message.
+Show `A → B → C → A` in the error message.
 
-### 109. Разделить alias cycle и constructor cycle
+### 109. Separate Alias Cycle and Constructor Cycle
 
-Возвращать разные error codes для configuration diagnostics.
+Return different error codes for configuration diagnostics.
 
-### 110. Реализовать topological sort
+### 110. Implement Topological Sort
 
-Получать порядок eager initialization и disposal.
+Obtain the order of eager initialization and disposal.
 
-### 111. Обнаруживать disconnected providers
+### 111. Detect Disconnected Providers
 
-Находить registrations, недостижимые от заданных composition roots.
+Find registrations unreachable from the specified composition roots.
 
-### 112. Обнаруживать duplicate providers
+### 112. Detect Duplicate Providers
 
-Различать accidental duplicate и intentional override.
+Distinguish an accidental duplicate from an intentional override.
 
-### 113. Обнаруживать ambiguous providers
+### 113. Detect Ambiguous Providers
 
-Отклонять обычный resolve при нескольких non-multi implementations.
+Reject a regular resolve when multiple non-multi implementations exist.
 
-### 114. Реализовать dependency graph snapshot
+### 114. Implement Dependency Graph Snapshot
 
-Возвращать immutable representation nodes и edges.
+Return an immutable representation of nodes and edges.
 
-### 115. Реализовать graph traversal API
+### 115. Implement Graph Traversal API
 
-Позволить tools анализировать ancestors, descendants и paths.
+Allow tools to analyze ancestors, descendants, and paths.
 
-### 116. Реализовать graph validation
+### 116. Implement Graph Validation
 
-Проверять missing dependencies, cycles, scopes и async boundaries без создания instances.
+Check missing dependencies, cycles, scopes, and async boundaries without creating instances.
 
-### 117. Реализовать dry-run resolution
+### 117. Implement Dry-run Resolution
 
-Проверять object graph без вызова constructors и factories.
+Check the object graph without invoking constructors and factories.
 
-### 118. Реализовать root validation
+### 118. Implement Root Validation
 
-Проверять только dependencies выбранных application entry points.
+Check only the dependencies of selected application entry points.
 
-### 119. Реализовать full-container validation
+### 119. Implement Full-container Validation
 
-Проверять все зарегистрированные providers.
+Check all registered providers.
 
-### 120. Тестировать сложные dependency graphs
+### 120. Test Complex Dependency Graphs
 
-Проверить diamond graphs, aliases, multi-providers, missing nodes и cycles.
+Verify diamond graphs, aliases, multi-providers, missing nodes, and cycles.
 
-## 7. Constructor resolution
+## 7. Constructor Resolution
 
-### 121. Определить Constructor type
+### 121. Define Constructor Type
 
-Создать безопасный generic type для instantiable classes.
+Create a safe generic type for instantiable classes.
 
-### 122. Реализовать explicit dependency list
+### 122. Implement Explicit Dependency List
 
-Позволить ClassProvider задавать constructor tokens без decorators.
+Allow ClassProvider to specify constructor tokens without decorators.
 
-### 123. Реализовать static `inject` property
+### 123. Implement Static `inject` Property
 
-Поддержать class-level declaration зависимостей.
+Support class-level dependency declaration.
 
-### 124. Определить precedence metadata sources
+### 124. Define Metadata Source Precedence
 
-Зафиксировать порядок explicit provider deps, static inject и decorator metadata.
+Record the order of explicit provider deps, static inject, and decorator metadata.
 
-### 125. Реализовать constructor invocation
+### 125. Implement Constructor Invocation
 
-Создавать instance через `Reflect.construct`.
+Create an instance through `Reflect.construct`.
 
-### 126. Сохранять constructor errors
+### 126. Preserve Constructor Errors
 
-Не скрывать исходный exception user class.
+Do not hide the original exception from the user class.
 
-### 127. Оборачивать constructor errors
+### 127. Wrap Constructor Errors
 
-Добавлять token и resolution path через error cause.
+Add the token and resolution path through the error cause.
 
-### 128. Поддержать zero-argument constructors
+### 128. Support Zero-argument Constructors
 
-Создавать class без metadata.
+Create a class without metadata.
 
-### 129. Поддержать abstract class token
+### 129. Support Abstract Class Token
 
-Разрешать abstract constructor как token, но не как instantiable implementation.
+Resolve an abstract constructor as a token, but not as an instantiable implementation.
 
-### 130. Проверять instantiability
+### 130. Check Instantiability
 
-Обнаруживать arrow functions, plain functions и invalid constructor values.
+Detect arrow functions, plain functions, and invalid constructor values.
 
-### 131. Поддержать inherited constructor metadata
+### 131. Support Inherited Constructor Metadata
 
-Определить наследование dependencies от base class.
+Define inheritance of dependencies from the base class.
 
-### 132. Обрабатывать overridden constructor
+### 132. Handle Overridden Constructor
 
-Не смешивать metadata parent и child без явного правила.
+Do not mix parent and child metadata without an explicit rule.
 
-### 133. Поддержать optional constructor dependencies
+### 133. Support Optional Constructor Dependencies
 
-Разрешать отсутствие marked dependency.
+Allow a marked dependency to be absent.
 
-### 134. Поддержать default constructor parameters
+### 134. Support Default Constructor Parameters
 
-Определить взаимодействие optional injection и JavaScript defaults.
+Define the interaction between optional injection and JavaScript defaults.
 
-### 135. Поддержать rest parameters
+### 135. Support Rest Parameters
 
-Зафиксировать ограничения injection для variadic constructors.
+Record injection limitations for variadic constructors.
 
-### 136. Поддержать primitive dependencies
+### 136. Support Primitive Dependencies
 
-Требовать explicit tokens для string, number и boolean configuration.
+Require explicit tokens for string, number, and boolean configuration.
 
-### 137. Запретить неявную инъекцию `Object`
+### 137. Prohibit Implicit Injection of `Object`
 
-Выдавать metadata error вместо ambiguous resolution.
+Return a metadata error instead of ambiguous resolution.
 
-### 138. Запретить неявную инъекцию `Promise`
+### 138. Prohibit Implicit Injection of `Promise`
 
-Требовать explicit async provider token.
+Require an explicit async provider token.
 
-### 139. Создать constructor dependency inspector
+### 139. Create Constructor Dependency Inspector
 
-Возвращать tokens, optional flags и metadata source.
+Return tokens, optional flags, and metadata source.
 
-### 140. Тестировать constructor resolution
+### 140. Test Constructor Resolution
 
-Проверить inheritance, optional parameters, primitives и thrown errors.
+Verify inheritance, optional parameters, primitives, and thrown errors.
 
-## 8. Decorators и metadata
+## 8. Decorators and Metadata
 
-### 141. Исследовать legacy decorators TypeScript
+### 141. Research TypeScript Legacy Decorators
 
-Разобрать `experimentalDecorators` и `emitDecoratorMetadata`.
+Examine `experimentalDecorators` and `emitDecoratorMetadata`.
 
-### 142. Исследовать standard ECMAScript decorators
+### 142. Research Standard ECMAScript Decorators
 
-Сравнить новую decorator semantics с legacy implementation.
+Compare the new decorator semantics with the legacy implementation.
 
-### 143. Выбрать decorator compatibility strategy
+### 143. Choose Decorator Compatibility Strategy
 
-Зафиксировать поддерживаемые compiler modes.
+Record the supported compiler modes.
 
-### 144. Подключить reflect-metadata
+### 144. Connect reflect-metadata
 
-Использовать metadata API только в decorators package.
+Use the metadata API only in the decorators package.
 
-### 145. Реализовать `@Injectable`
+### 145. Implement `@Injectable`
 
-Помечать class как доступный для metadata-based construction.
+Mark a class as available for metadata-based construction.
 
-### 146. Реализовать `@Inject`
+### 146. Implement `@Inject`
 
-Указывать explicit token constructor parameter.
+Specify an explicit token for a constructor parameter.
 
-### 147. Реализовать `@Optional`
+### 147. Implement `@Optional`
 
-Помечать dependency необязательной.
+Mark a dependency as optional.
 
-### 148. Реализовать `@Lazy`
+### 148. Implement `@Lazy`
 
-Передавать lazy resolver или proxy.
+Pass a lazy resolver or proxy.
 
-### 149. Реализовать `@MultiInject`
+### 149. Implement `@MultiInject`
 
-Получать массив implementations одного multi-token.
+Obtain an array of implementations for one multi-token.
 
-### 150. Реализовать `@Singleton`
+### 150. Implement `@Singleton`
 
-Назначать singleton scope class provider.
+Assign singleton scope to a class provider.
 
-### 151. Реализовать `@Transient`
+### 151. Implement `@Transient`
 
-Назначать transient scope.
+Assign transient scope.
 
-### 152. Реализовать `@Scoped`
+### 152. Implement `@Scoped`
 
-Назначать built-in или custom scope.
+Assign a built-in or custom scope.
 
-### 153. Реализовать `@PostConstruct`
+### 153. Implement `@PostConstruct`
 
-Помечать lifecycle initialization method.
+Mark a lifecycle initialization method.
 
-### 154. Реализовать `@PreDestroy`
+### 154. Implement `@PreDestroy`
 
-Помечать lifecycle disposal method.
+Mark a lifecycle disposal method.
 
-### 155. Реализовать class registration decorator
+### 155. Implement Class Registration Decorator
 
-Исследовать automatic global registration и его drawbacks.
+Research automatic global registration and its drawbacks.
 
-### 156. Отделить metadata declaration от registration
+### 156. Separate Metadata Declaration from Registration
 
-Не изменять global container при import class module.
+Do not modify the global container when importing a class module.
 
-### 157. Реализовать metadata reader
+### 157. Implement Metadata Reader
 
-Нормализовать design metadata и Injectra-specific annotations.
+Normalize design metadata and Injectra-specific annotations.
 
-### 158. Проверять decorator conflicts
+### 158. Check Decorator Conflicts
 
-Отклонять одновременные несовместимые annotations.
+Reject simultaneous incompatible annotations.
 
-### 159. Создать decorator-free equivalent
+### 159. Create Decorator-free Equivalent
 
-Документировать explicit API для каждой decorator capability.
+Document an explicit API for each decorator capability.
 
-### 160. Тестировать decorator metadata
+### 160. Test Decorator Metadata
 
-Проверить inheritance, parameter indexes, minification и missing metadata.
+Verify inheritance, parameter indexes, minification, and missing metadata.
 
-## 9. Singleton и transient scopes
+## 9. Singleton and Transient Scopes
 
-### 161. Реализовать singleton cache
+### 161. Implement Singleton Cache
 
-Создавать один instance на container lifecycle.
+Create one instance per container lifecycle.
 
-### 162. Реализовать singleton promise cache
+### 162. Implement Singleton Promise Cache
 
-Не запускать async factory повторно при concurrent resolution.
+Do not start an async factory repeatedly during concurrent resolution.
 
-### 163. Обрабатывать singleton initialization failure
+### 163. Handle Singleton Initialization Failure
 
-Определить удаление rejected Promise из cache и возможность retry.
+Define removal of a rejected Promise from the cache and the possibility of retry.
 
-### 164. Защитить singleton от partial publication
+### 164. Protect Singleton from Partial Publication
 
-Не помещать незавершённый instance в общий cache без controlled cycle strategy.
+Do not place an unfinished instance in the shared cache without a controlled cycle strategy.
 
-### 165. Реализовать transient scope
+### 165. Implement Transient Scope
 
-Создавать новый instance при каждом dependency resolution.
+Create a new instance on every dependency resolution.
 
-### 166. Проверить nested transient dependencies
+### 166. Check Nested Transient Dependencies
 
-Создавать независимое дерево transient instances.
+Create an independent tree of transient instances.
 
-### 167. Реализовать resolution-scoped instance
+### 167. Implement Resolution-scoped Instance
 
-Переиспользовать instance только внутри одного root resolve operation.
+Reuse an instance only within one root resolve operation.
 
-### 168. Сравнить singleton и resolution scope
+### 168. Compare Singleton and Resolution Scope
 
-Проверить diamond dependency graph.
+Check a diamond dependency graph.
 
-### 169. Реализовать scope hierarchy validation
+### 169. Implement Scope Hierarchy Validation
 
-Запрещать singleton, напрямую зависящий от request-scoped provider.
+Prohibit a singleton from directly depending on a request-scoped provider.
 
-### 170. Определить transient capture policy
+### 170. Define Transient Capture Policy
 
-Предупреждать о transient dependency, сохранённой singleton instance.
+Warn about a transient dependency stored by a singleton instance.
 
-### 171. Реализовать scope rank
+### 171. Implement Scope Rank
 
-Сравнивать lifetime provider и его dependencies.
+Compare the lifetime of a provider and its dependencies.
 
-### 172. Реализовать captive dependency detection
+### 172. Implement Captive Dependency Detection
 
-Находить dependency с более коротким lifecycle внутри долгоживущего provider.
+Find a dependency with a shorter lifecycle inside a long-lived provider.
 
-### 173. Добавить strict scope mode
+### 173. Add Strict Scope Mode
 
-Отклонять captive dependencies при bootstrap validation.
+Reject captive dependencies during bootstrap validation.
 
-### 174. Добавить warning scope mode
+### 174. Add Warning Scope Mode
 
-Публиковать diagnostic warning без остановки application.
+Publish a diagnostic warning without stopping the application.
 
-### 175. Реализовать scope-aware aliases
+### 175. Implement Scope-aware Aliases
 
-Сохранять lifecycle исходного provider.
+Preserve the lifecycle of the original provider.
 
-### 176. Реализовать scope-aware multi-providers
+### 176. Implement Scope-aware Multi-providers
 
-Разрешать collection из providers разных scopes с явными правилами.
+Allow a collection of providers with different scopes under explicit rules.
 
-### 177. Реализовать singleton reset
+### 177. Implement Singleton Reset
 
-Удалять cached instance и корректно вызывать disposal.
+Remove the cached instance and correctly invoke disposal.
 
-### 178. Реализовать selective cache invalidation
+### 178. Implement Selective Cache Invalidation
 
-Сбрасывать provider и зависящие от него cached instances.
+Reset a provider and cached instances that depend on it.
 
-### 179. Тестировать concurrent singleton resolution
+### 179. Test Concurrent Singleton Resolution
 
-Запускать множество parallel resolve одного async provider.
+Run many parallel resolves of one async provider.
 
-### 180. Тестировать scope invariants
+### 180. Test Scope Invariants
 
-Проверить singleton, transient, resolution scope и captive dependencies.
+Verify singleton, transient, resolution scope, and captive dependencies.
 
-## 10. Request и custom scopes
+## 10. Request and Custom Scopes
 
-### 181. Определить Scope abstraction
+### 181. Define Scope Abstraction
 
-Создать API хранения и получения instances для конкретного lifecycle context.
+Create an API for storing and obtaining instances for a specific lifecycle context.
 
-### 182. Реализовать ScopeId
+### 182. Implement ScopeId
 
-Использовать runtime identifier конкретного scope instance.
+Use a runtime identifier of a specific scope instance.
 
-### 183. Реализовать request scope
+### 183. Implement Request Scope
 
-Создавать один instance provider на HTTP request.
+Create one provider instance per HTTP request.
 
-### 184. Создать child scope
+### 184. Create Child Scope
 
-Наследовать registrations root container с отдельным scoped cache.
+Inherit root container registrations with a separate scoped cache.
 
-### 185. Реализовать `runInScope`
+### 185. Implement `runInScope`
 
-Выполнять callback внутри созданного scope.
+Execute a callback inside a created scope.
 
-### 186. Реализовать scope disposal
+### 186. Implement Scope Disposal
 
-Освобождать scoped instances после завершения callback.
+Release scoped instances after the callback finishes.
 
-### 187. Реализовать AsyncLocalStorage integration
+### 187. Implement AsyncLocalStorage Integration
 
-Передавать active scope через asynchronous execution chain.
+Propagate the active scope through the asynchronous execution chain.
 
-### 188. Не полагаться только на AsyncLocalStorage
+### 188. Do Not Rely Only on AsyncLocalStorage
 
-Поддержать explicit scope parameter для libraries и tests.
+Support an explicit scope parameter for libraries and tests.
 
-### 189. Реализовать current scope lookup
+### 189. Implement Current Scope Lookup
 
-Получать active scope с понятной ошибкой при его отсутствии.
+Obtain the active scope with a clear error when it is absent.
 
-### 190. Реализовать request context provider
+### 190. Implement Request Context Provider
 
-Инъецировать requestId, actor и tenant context.
+Inject requestId, actor, and tenant context.
 
-### 191. Запретить request scope вне request context
+### 191. Prohibit Request Scope Outside Request Context
 
-Возвращать отдельную MissingScopeError.
+Return a separate MissingScopeError.
 
-### 192. Реализовать custom scope registration
+### 192. Implement Custom Scope Registration
 
-Позволить application определить lifecycle и cache strategy.
+Allow the application to define lifecycle and cache strategy.
 
-### 193. Реализовать transaction scope
+### 193. Implement Transaction Scope
 
-Переиспользовать transaction-bound dependencies внутри unit of work.
+Reuse transaction-bound dependencies inside a unit of work.
 
-### 194. Реализовать job scope
+### 194. Implement Job Scope
 
-Создавать context на время обработки background job.
+Create a context for the duration of background job processing.
 
-### 195. Реализовать WebSocket connection scope
+### 195. Implement WebSocket Connection Scope
 
-Переиспользовать dependencies в lifecycle одного connection.
+Reuse dependencies in the lifecycle of one connection.
 
-### 196. Реализовать manual scope
+### 196. Implement Manual Scope
 
-Позволить явно открывать и закрывать scope.
+Allow explicitly opening and closing a scope.
 
-### 197. Реализовать nested scopes
+### 197. Implement Nested Scopes
 
-Определить наследование caches и visibility parent scope.
+Define cache inheritance and parent-scope visibility.
 
-### 198. Запретить scope use after disposal
+### 198. Prohibit Scope Use After Disposal
 
-Обнаруживать asynchronous work, пережившую lifecycle context.
+Detect asynchronous work that outlives the lifecycle context.
 
-### 199. Реализовать scope leak diagnostics
+### 199. Implement Scope Leak Diagnostics
 
-Отслеживать незакрытые scopes в development mode.
+Track unclosed scopes in development mode.
 
-### 200. Тестировать scope propagation
+### 200. Test Scope Propagation
 
-Проверить promises, timers, EventEmitter, workers и concurrent requests.
+Verify promises, timers, EventEmitter, workers, and concurrent requests.
 
-## 11. Async providers и bootstrap
+## 11. Async Providers and Bootstrap
 
-### 201. Определить synchronous resolution boundary
+### 201. Define Synchronous Resolution Boundary
 
-Запрещать `resolve` для graph, содержащего async provider.
+Prohibit `resolve` for a graph containing an async provider.
 
-### 202. Создать AsyncProviderError
+### 202. Create AsyncProviderError
 
-Показывать token и async dependency path.
+Show the token and async dependency path.
 
-### 203. Реализовать async factory resolution
+### 203. Implement Async Factory Resolution
 
-Ожидать Promise и кэшировать результат согласно scope.
+Await the Promise and cache the result according to scope.
 
-### 204. Поддержать mixed sync/async graph
+### 204. Support Mixed Sync/Async Graph
 
-Разрешать sync providers внутри async root resolution.
+Allow sync providers inside async root resolution.
 
-### 205. Реализовать asynchronous class initialization
+### 205. Implement Asynchronous Class Initialization
 
-Ожидать `@PostConstruct` или lifecycle hook, возвращающий Promise.
+Await `@PostConstruct` or a lifecycle hook that returns a Promise.
 
-### 206. Реализовать container bootstrap
+### 206. Implement Container Bootstrap
 
-Создавать eager providers и выполнять initialization hooks.
+Create eager providers and execute initialization hooks.
 
-### 207. Вычислять bootstrap order
+### 207. Calculate Bootstrap Order
 
-Инициализировать dependencies раньше dependents.
+Initialize dependencies before dependents.
 
-### 208. Реализовать parallel bootstrap
+### 208. Implement Parallel Bootstrap
 
-Параллельно создавать независимые branches graph.
+Create independent graph branches in parallel.
 
-### 209. Ограничить bootstrap concurrency
+### 209. Limit Bootstrap Concurrency
 
-Не создавать чрезмерную нагрузку на database и network dependencies.
+Do not create excessive load on database and network dependencies.
 
-### 210. Обрабатывать bootstrap failure
+### 210. Handle Bootstrap Failure
 
-Останавливать initialization и освобождать уже созданные instances.
+Stop initialization and release already created instances.
 
-### 211. Реализовать bootstrap rollback
+### 211. Implement Bootstrap Rollback
 
-Вызывать disposal в обратном порядке успешной initialization.
+Invoke disposal in reverse order of successful initialization.
 
-### 212. Реализовать bootstrap timeout
+### 212. Implement Bootstrap Timeout
 
-Прерывать зависший provider initialization.
+Interrupt a hung provider initialization.
 
-### 213. Поддержать AbortSignal
+### 213. Support AbortSignal
 
-Передавать cancellation в async factories и hooks.
+Pass cancellation to async factories and hooks.
 
-### 214. Реализовать lazy async provider
+### 214. Implement Lazy Async Provider
 
-Создавать provider только при первом `resolveAsync`.
+Create the provider only on the first `resolveAsync`.
 
-### 215. Реализовать eager async provider
+### 215. Implement Eager Async Provider
 
-Создавать provider во время bootstrap.
+Create the provider during bootstrap.
 
-### 216. Реализовать readiness state
+### 216. Implement Readiness State
 
-Считать container готовым только после завершения bootstrap.
+Consider the container ready only after bootstrap completes.
 
-### 217. Реализовать provider health hook
+### 217. Implement Provider Health Hook
 
-Позволить initialized dependency сообщать readiness status.
+Allow an initialized dependency to report readiness status.
 
-### 218. Реализовать retry initialization policy
+### 218. Implement Retry Initialization Policy
 
-Повторять только явно retryable initialization failures.
+Retry only explicitly retryable initialization failures.
 
-### 219. Создать bootstrap report
+### 219. Create Bootstrap Report
 
-Показывать duration, order и failures providers.
+Show provider duration, order, and failures.
 
-### 220. Тестировать asynchronous bootstrap
+### 220. Test Asynchronous Bootstrap
 
-Проверить parallel branches, cancellation, rollback и retries.
+Verify parallel branches, cancellation, rollback, and retries.
 
-## 12. Circular dependencies и lazy resolution
+## 12. Circular Dependencies and Lazy Resolution
 
-### 221. Классифицировать circular dependencies
+### 221. Classify Circular Dependencies
 
-Разделить direct, indirect, alias, module и runtime cycles.
+Separate direct, indirect, alias, module, and runtime cycles.
 
-### 222. Реализовать strict cycle detection
+### 222. Implement Strict Cycle Detection
 
-Отклонять constructor cycles по умолчанию.
+Reject constructor cycles by default.
 
-### 223. Создать CircularDependencyError
+### 223. Create CircularDependencyError
 
-Возвращать полный path и metadata каждого edge.
+Return the full path and metadata of each edge.
 
-### 224. Реализовать lazy resolver
+### 224. Implement Lazy Resolver
 
-Инъецировать function `() => dependency`.
+Inject a function `() => dependency`.
 
-### 225. Реализовать ProviderRef
+### 225. Implement ProviderRef
 
-Создать typed handle для отложенного `get`.
+Create a typed handle for deferred `get`.
 
-### 226. Реализовать forward token reference
+### 226. Implement Forward Token Reference
 
-Позволить ссылаться на token, объявленный позже.
+Allow referencing a token declared later.
 
-### 227. Не скрывать architectural cycles
+### 227. Do Not Hide Architectural Cycles
 
-Добавлять warning при использовании forward reference.
+Add a warning when a forward reference is used.
 
-### 228. Реализовать lazy proxy experiment
+### 228. Implement Lazy Proxy Experiment
 
-Создавать Proxy, разрешающий target при первом property access.
+Create a Proxy that resolves the target on first property access.
 
-### 229. Обработать methods lazy proxy
+### 229. Handle Lazy Proxy Methods
 
-Корректно связывать `this` с resolved target.
+Correctly bind `this` to the resolved target.
 
-### 230. Обработать properties lazy proxy
+### 230. Handle Lazy Proxy Properties
 
-Передавать get, set и property descriptors.
+Forward get, set, and property descriptors.
 
-### 231. Обработать symbols lazy proxy
+### 231. Handle Lazy Proxy Symbols
 
-Поддержать inspection, iteration и custom symbols.
+Support inspection, iteration, and custom symbols.
 
-### 232. Определить proxy identity semantics
+### 232. Define Proxy Identity Semantics
 
-Зафиксировать поведение `instanceof`, equality и reflection.
+Record the behavior of `instanceof`, equality, and reflection.
 
-### 233. Обрабатывать async lazy dependencies
+### 233. Handle Async Lazy Dependencies
 
-Возвращать Promise-aware ProviderRef вместо прозрачного proxy.
+Return a Promise-aware ProviderRef instead of a transparent proxy.
 
-### 234. Реализовать cycle-breaking factory
+### 234. Implement Cycle-breaking Factory
 
-Использовать explicit factory для позднего связывания collaborators.
+Use an explicit factory for late binding of collaborators.
 
-### 235. Исследовать setter-based cycle resolution
+### 235. Research Setter-based Cycle Resolution
 
-Показать риск partially initialized objects.
+Show the risk of partially initialized objects.
 
-### 236. Исследовать event-based decoupling
+### 236. Research Event-based Decoupling
 
-Разорвать dependency cycle через domain events или mediator.
+Break the dependency cycle through domain events or a mediator.
 
-### 237. Создать cycle visualization
+### 237. Create Cycle Visualization
 
-Подсвечивать strongly connected components graph.
+Highlight strongly connected components of the graph.
 
-### 238. Реализовать Tarjan algorithm
+### 238. Implement Tarjan Algorithm
 
-Находить все strongly connected components container graph.
+Find all strongly connected components of the container graph.
 
-### 239. Создать cycle remediation hints
+### 239. Create Cycle Remediation Hints
 
-Предлагать extraction interface, mediator, lazy ref или boundary change.
+Suggest interface extraction, mediator, lazy ref, or boundary change.
 
-### 240. Тестировать circular dependency handling
+### 240. Test Circular Dependency Handling
 
-Проверить strict errors, lazy refs, proxies и module cycles.
+Verify strict errors, lazy refs, proxies, and module cycles.
 
-## 13. Modules и provider visibility
+## 13. Modules and Provider Visibility
 
-### 241. Спроектировать ModuleDefinition
+### 241. Design ModuleDefinition
 
-Добавить providers, imports, exports и metadata.
+Add providers, imports, exports, and metadata.
 
-### 242. Реализовать module registration
+### 242. Implement Module Registration
 
-Добавлять module providers в container registry.
+Add module providers to the container registry.
 
-### 243. Реализовать module imports
+### 243. Implement Module Imports
 
-Разрешать использование exported providers других modules.
+Allow use of exported providers from other modules.
 
-### 244. Реализовать module exports
+### 244. Implement Module Exports
 
-Ограничивать доступ к internal providers.
+Limit access to internal providers.
 
-### 245. Реализовать private providers
+### 245. Implement Private Providers
 
-Не позволять resolve вне declaring module.
+Do not allow resolve outside the declaring module.
 
-### 246. Реализовать global modules
+### 246. Implement Global Modules
 
-Предоставлять selected exports всем modules с явной регистрацией.
+Provide selected exports to all modules with explicit registration.
 
-### 247. Ограничить global modules
+### 247. Limit Global Modules
 
-Добавить diagnostics чрезмерного global provider usage.
+Add diagnostics for excessive use of global providers.
 
-### 248. Реализовать dynamic modules
+### 248. Implement Dynamic Modules
 
-Создавать ModuleDefinition через configuration factory.
+Create ModuleDefinition through a configuration factory.
 
-### 249. Реализовать async dynamic modules
+### 249. Implement Async Dynamic Modules
 
-Поддержать asynchronous configuration providers.
+Support asynchronous configuration providers.
 
-### 250. Реализовать module configuration token
+### 250. Implement Module Configuration Token
 
-Передавать typed options без global mutable state.
+Pass typed options without global mutable state.
 
-### 251. Реализовать module re-export
+### 251. Implement Module Re-export
 
-Экспортировать providers imported module.
+Export providers from an imported module.
 
-### 252. Обнаруживать module import cycles
+### 252. Detect Module Import Cycles
 
-Возвращать отдельную ModuleCycleError.
+Return a separate ModuleCycleError.
 
-### 253. Обнаруживать missing exports
+### 253. Detect Missing Exports
 
-Показывать provider, существующий в module, но не экспортированный.
+Show a provider that exists in a module but is not exported.
 
-### 254. Реализовать module namespaces
+### 254. Implement Module Namespaces
 
-Предотвращать accidental token collisions между libraries.
+Prevent accidental token collisions between libraries.
 
-### 255. Реализовать module instances
+### 255. Implement Module Instances
 
-Определить, может ли один ModuleDefinition подключаться с разными configurations.
+Define whether one ModuleDefinition can be connected with different configurations.
 
-### 256. Поддержать multi-instance module
+### 256. Support Multi-instance Module
 
-Изолировать providers конфигурацией и module instance ID.
+Isolate providers by configuration and module instance ID.
 
-### 257. Реализовать conditional module imports
+### 257. Implement Conditional Module Imports
 
-Подключать integration в зависимости от environment.
+Connect an integration depending on the environment.
 
-### 258. Реализовать module graph snapshot
+### 258. Implement Module Graph Snapshot
 
-Показывать imports, exports и private providers.
+Show imports, exports, and private providers.
 
-### 259. Создать module validation
+### 259. Create Module Validation
 
-Проверять cycles, duplicate exports и unresolved imports.
+Check cycles, duplicate exports, and unresolved imports.
 
-### 260. Тестировать module boundaries
+### 260. Test Module Boundaries
 
-Проверить private visibility, re-exports, dynamic modules и multiple instances.
+Verify private visibility, re-exports, dynamic modules, and multiple instances.
 
-## 14. Child containers и hierarchy
+## 14. Child Containers and Hierarchy
 
-### 261. Реализовать parent container
+### 261. Implement Parent Container
 
-Позволить child container наследовать registrations parent.
+Allow a child container to inherit parent registrations.
 
-### 262. Реализовать local provider lookup
+### 262. Implement Local Provider Lookup
 
-Искать provider сначала в child, затем в parent.
+Search for a provider first in the child, then in the parent.
 
-### 263. Реализовать child override
+### 263. Implement Child Override
 
-Заменять parent provider только внутри child hierarchy.
+Replace a parent provider only inside the child hierarchy.
 
-### 264. Определить singleton ownership
+### 264. Define Singleton Ownership
 
-Решить, используется ли parent singleton или создаётся child-local instance.
+Decide whether the parent singleton is used or a child-local instance is created.
 
-### 265. Реализовать inherited singleton
+### 265. Implement Inherited Singleton
 
-Переиспользовать instance container, владеющего registration.
+Reuse the instance of the container that owns the registration.
 
-### 266. Реализовать child-local singleton override
+### 266. Implement Child-local Singleton Override
 
-Создавать отдельный instance для overridden provider.
+Create a separate instance for an overridden provider.
 
-### 267. Реализовать child disposal
+### 267. Implement Child Disposal
 
-Не уничтожать parent-owned instances.
+Do not destroy parent-owned instances.
 
-### 268. Реализовать hierarchy-aware scopes
+### 268. Implement Hierarchy-aware Scopes
 
-Сохранять ownership cache и disposal hooks.
+Preserve cache ownership and disposal hooks.
 
-### 269. Реализовать container fork
+### 269. Implement Container Fork
 
-Копировать registrations в независимый container snapshot.
+Copy registrations into an independent container snapshot.
 
-### 270. Сравнить child и fork semantics
+### 270. Compare Child and Fork Semantics
 
-Документировать shared и isolated state.
+Document shared and isolated state.
 
-### 271. Реализовать tenant child container
+### 271. Implement Tenant Child Container
 
-Изолировать tenant-specific configuration и adapters.
+Isolate tenant-specific configuration and adapters.
 
-### 272. Реализовать plugin child container
+### 272. Implement Plugin Child Container
 
-Ограничить доступ plugin к selected host dependencies.
+Limit plugin access to selected host dependencies.
 
-### 273. Реализовать test child container
+### 273. Implement Test Child Container
 
-Переопределять dependencies без изменения root fixture.
+Override dependencies without changing the root fixture.
 
-### 274. Ограничить parent access
+### 274. Limit Parent Access
 
-Не позволять parent container разрешать child-only providers.
+Do not allow the parent container to resolve child-only providers.
 
-### 275. Реализовать hierarchy diagnostics
+### 275. Implement Hierarchy Diagnostics
 
-Показывать registration owner и resolution source.
+Show registration owner and resolution source.
 
-### 276. Обнаруживать shadowed provider
+### 276. Detect Shadowed Provider
 
-Предупреждать, что child registration скрывает parent token.
+Warn that a child registration hides a parent token.
 
-### 277. Реализовать hierarchy freeze
+### 277. Implement Hierarchy Freeze
 
-Определить влияние freeze parent на child containers.
+Define the effect of freezing the parent on child containers.
 
-### 278. Реализовать hierarchy reset
+### 278. Implement Hierarchy Reset
 
-Сбрасывать только owned caches выбранного container.
+Reset only caches owned by the selected container.
 
-### 279. Тестировать nested containers
+### 279. Test Nested Containers
 
-Проверить lookup, overrides, ownership и disposal на нескольких уровнях.
+Verify lookup, overrides, ownership, and disposal across multiple levels.
 
-### 280. Документировать container hierarchy
+### 280. Document Container Hierarchy
 
-Зафиксировать resolution, caching и lifecycle semantics.
+Record resolution, caching, and lifecycle semantics.
 
-## 15. Lifecycle hooks и disposal
+## 15. Lifecycle Hooks and Disposal
 
-### 281. Определить Disposable contract
+### 281. Define Disposable Contract
 
-Поддержать synchronous cleanup method.
+Support a synchronous cleanup method.
 
-### 282. Определить AsyncDisposable contract
+### 282. Define AsyncDisposable Contract
 
-Поддержать asynchronous cleanup method.
+Support an asynchronous cleanup method.
 
-### 283. Поддержать `Symbol.dispose`
+### 283. Support `Symbol.dispose`
 
-Интегрировать explicit resource management при доступности runtime.
+Integrate explicit resource management when available in the runtime.
 
-### 284. Поддержать `Symbol.asyncDispose`
+### 284. Support `Symbol.asyncDispose`
 
-Освобождать asynchronous resources стандартным protocol.
+Release asynchronous resources through the standard protocol.
 
-### 285. Реализовать initialization hook
+### 285. Implement Initialization Hook
 
-Вызывать `onInit` после создания dependencies.
+Call `onInit` after dependencies are created.
 
-### 286. Реализовать destruction hook
+### 286. Implement Destruction Hook
 
-Вызывать `onDestroy` перед окончательным освобождением instance.
+Call `onDestroy` before final release of the instance.
 
-### 287. Определить lifecycle hook precedence
+### 287. Define Lifecycle Hook Precedence
 
-Зафиксировать порядок decorators, interfaces и standard symbols.
+Record the order of decorators, interfaces, and standard symbols.
 
-### 288. Вызывать initialization в dependency order
+### 288. Call Initialization in Dependency Order
 
-Инициализировать dependency раньше consuming provider.
+Initialize a dependency before the provider that consumes it.
 
-### 289. Вызывать disposal в reverse order
+### 289. Call Disposal in Reverse Order
 
-Освобождать dependents раньше dependencies.
+Release dependents before dependencies.
 
-### 290. Отслеживать creation order
+### 290. Track Creation Order
 
-Сохранять точную последовательность успешно созданных instances.
+Store the exact sequence of successfully created instances.
 
-### 291. Не уничтожать ValueProvider автоматически
+### 291. Do Not Destroy ValueProvider Automatically
 
-Требовать explicit ownership flag для внешних instances.
+Require an explicit ownership flag for external instances.
 
-### 292. Реализовать provider ownership
+### 292. Implement Provider Ownership
 
-Разделить container-owned и externally-owned resources.
+Separate container-owned and externally owned resources.
 
-### 293. Реализовать disposal timeout
+### 293. Implement Disposal Timeout
 
-Не позволять одному hook бесконечно блокировать shutdown.
+Do not allow one hook to block shutdown indefinitely.
 
-### 294. Передавать AbortSignal в disposal
+### 294. Pass AbortSignal to Disposal
 
-Позволить принудительно завершить долгий cleanup.
+Allow forced termination of long cleanup.
 
-### 295. Обрабатывать multiple disposal errors
+### 295. Handle Multiple Disposal Errors
 
-Собирать AggregateError без прекращения cleanup остальных instances.
+Collect an AggregateError without stopping cleanup of the remaining instances.
 
-### 296. Сделать disposal idempotent
+### 296. Make Disposal Idempotent
 
-Не вызывать cleanup повторно для одного instance.
+Do not invoke cleanup repeatedly for one instance.
 
-### 297. Реализовать partial graph disposal
+### 297. Implement Partial Graph Disposal
 
-Освобождать выбранный provider и container-owned dependents.
+Release a selected provider and container-owned dependents.
 
-### 298. Обрабатывать reset lifecycle
+### 298. Handle Reset Lifecycle
 
-Сначала уничтожать cached instances, затем разрешать повторное создание.
+Destroy cached instances first, then allow recreation.
 
-### 299. Интегрировать process signals
+### 299. Integrate Process Signals
 
-Корректно закрывать container при SIGTERM и SIGINT.
+Correctly close the container on SIGTERM and SIGINT.
 
-### 300. Тестировать lifecycle hooks
+### 300. Test Lifecycle Hooks
 
-Проверить order, async cleanup, failures, ownership и idempotency.
+Verify order, async cleanup, failures, ownership, and idempotency.
 
-## 16. Error model и diagnostics
+## 16. Error Model and Diagnostics
 
-### 301. Создать базовый InjectraError
+### 301. Create Base InjectraError
 
-Добавить code, message, token, path, metadata и cause.
+Add code, message, token, path, metadata, and cause.
 
-### 302. Создать ProviderNotFoundError
+### 302. Create ProviderNotFoundError
 
-Показывать missing token и dependency chain.
+Show the missing token and dependency chain.
 
-### 303. Создать DuplicateProviderError
+### 303. Create DuplicateProviderError
 
-Показывать conflicting registrations и source modules.
+Show conflicting registrations and source modules.
 
-### 304. Создать AmbiguousProviderError
+### 304. Create AmbiguousProviderError
 
-Показывать candidate providers и способ исправления.
+Show candidate providers and the way to fix the issue.
 
-### 305. Создать CircularDependencyError
+### 305. Create CircularDependencyError
 
-Показывать cycle path.
+Show the cycle path.
 
-### 306. Создать InvalidProviderError
+### 306. Create InvalidProviderError
 
-Показывать нарушение provider schema.
+Show a provider schema violation.
 
-### 307. Создать ScopeMismatchError
+### 307. Create ScopeMismatchError
 
-Показывать captive dependency и lifecycles.
+Show the captive dependency and lifecycles.
 
-### 308. Создать MissingScopeError
+### 308. Create MissingScopeError
 
-Показывать required scope и root resolution.
+Show the required scope and root resolution.
 
-### 309. Создать AsyncResolutionError
+### 309. Create AsyncResolutionError
 
-Показывать async dependency внутри synchronous resolve.
+Show an async dependency inside synchronous resolve.
 
-### 310. Создать ContainerDisposedError
+### 310. Create ContainerDisposedError
 
-Запрещать операции над завершённым container.
+Prohibit operations on a disposed container.
 
-### 311. Создать ContainerFrozenError
+### 311. Create ContainerFrozenError
 
-Запрещать поздние registrations.
+Prohibit late registrations.
 
-### 312. Создать LifecycleHookError
+### 312. Create LifecycleHookError
 
-Сохранять hook name, provider и original cause.
+Preserve the hook name, provider, and original cause.
 
-### 313. Создать MetadataError
+### 313. Create MetadataError
 
-Показывать отсутствующие или неоднозначные decorator metadata.
+Show missing or ambiguous decorator metadata.
 
-### 314. Создать ModuleVisibilityError
+### 314. Create ModuleVisibilityError
 
-Показывать private provider и import/export chain.
+Show the private provider and import/export chain.
 
-### 315. Реализовать error formatting
+### 315. Implement Error Formatting
 
-Создавать краткий message и расширенный diagnostic report.
+Create a short message and an extended diagnostic report.
 
-### 316. Реализовать error serialization
+### 316. Implement Error Serialization
 
-Возвращать безопасное JSON representation без instance values и secrets.
+Return a safe JSON representation without instance values and secrets.
 
-### 317. Добавить resolution trace
+### 317. Add Resolution Trace
 
-Фиксировать последовательность registry lookup, cache hit и instance creation.
+Record the sequence of registry lookup, cache hit, and instance creation.
 
-### 318. Реализовать debug mode
+### 318. Implement Debug Mode
 
-Включать расширенную диагностику без изменения resolution semantics.
+Enable extended diagnostics without changing resolution semantics.
 
-### 319. Реализовать diagnostic listeners
+### 319. Implement Diagnostic Listeners
 
-Публиковать registration, resolution, cache и lifecycle events.
+Publish registration, resolution, cache, and lifecycle events.
 
-### 320. Тестировать error stability
+### 320. Test Error Stability
 
-Зафиксировать error codes и основные diagnostic fields как public API.
+Record error codes and key diagnostic fields as public API.
 
-## 17. Introspection и graph tooling
+## 17. Introspection and Graph Tooling
 
-### 321. Реализовать provider inspection
+### 321. Implement Provider Inspection
 
-Возвращать token, kind, scope, dependencies, module и status.
+Return token, kind, scope, dependencies, module, and status.
 
-### 322. Реализовать container inspection
+### 322. Implement Container Inspection
 
-Показывать registrations, cached instances и active scopes.
+Show registrations, cached instances, and active scopes.
 
-### 323. Не раскрывать provider values
+### 323. Do Not Expose Provider Values
 
-Возвращать metadata без secrets и internal object state.
+Return metadata without secrets and internal object state.
 
-### 324. Реализовать dependency graph export
+### 324. Implement Dependency Graph Export
 
-Экспортировать nodes и edges в JSON.
+Export nodes and edges to JSON.
 
-### 325. Реализовать Graphviz DOT export
+### 325. Implement Graphviz DOT Export
 
-Генерировать diagram dependency graph.
+Generate a dependency graph diagram.
 
-### 326. Реализовать Mermaid export
+### 326. Implement Mermaid Export
 
-Генерировать diagram для Markdown documentation.
+Generate a diagram for Markdown documentation.
 
-### 327. Подсвечивать scopes в graph
+### 327. Highlight Scopes in Graph
 
-Показывать singleton, transient, request и custom lifecycles.
+Show singleton, transient, request, and custom lifecycles.
 
-### 328. Подсвечивать module boundaries
+### 328. Highlight Module Boundaries
 
-Группировать providers по modules.
+Group providers by modules.
 
-### 329. Подсвечивать missing dependencies
+### 329. Highlight Missing Dependencies
 
-Показывать unresolved graph edges.
+Show unresolved graph edges.
 
-### 330. Подсвечивать circular dependencies
+### 330. Highlight Circular Dependencies
 
-Выделять strongly connected components.
+Highlight strongly connected components.
 
-### 331. Подсвечивать captive dependencies
+### 331. Highlight Captive Dependencies
 
-Отмечать scope lifetime violations.
+Mark scope lifetime violations.
 
-### 332. Реализовать graph diff
+### 332. Implement Graph Diff
 
-Сравнивать container configurations двух application versions.
+Compare container configurations of two application versions.
 
-### 333. Реализовать provider usage analysis
+### 333. Implement Provider Usage Analysis
 
-Показывать roots, consumers и resolution count.
+Show roots, consumers, and resolution count.
 
-### 334. Реализовать unused provider report
+### 334. Implement Unused Provider Report
 
-Находить registrations, не используемые выбранными roots.
+Find registrations unused by the selected roots.
 
-### 335. Реализовать startup timeline
+### 335. Implement Startup Timeline
 
-Показывать duration initialization каждого eager provider.
+Show the initialization duration of each eager provider.
 
-### 336. Реализовать resolution timeline
+### 336. Implement Resolution Timeline
 
-Показывать nested duration factory и constructor calls.
+Show nested duration of factory and constructor calls.
 
-### 337. Реализовать cache statistics
+### 337. Implement Cache Statistics
 
-Собирать hit, miss, create и reset counters.
+Collect hit, miss, create, and reset counters.
 
-### 338. Реализовать CLI `injectra inspect`
+### 338. Implement CLI `injectra inspect`
 
-Печатать provider и module metadata.
+Print provider and module metadata.
 
-### 339. Реализовать CLI `injectra graph`
+### 339. Implement CLI `injectra graph`
 
-Генерировать JSON, DOT или Mermaid graph.
+Generate a JSON, DOT, or Mermaid graph.
 
-### 340. Реализовать CLI `injectra validate`
+### 340. Implement CLI `injectra validate`
 
-Проверять registrations без запуска application.
+Check registrations without launching the application.
 
-## 18. Interceptors, hooks и extensibility
+## 18. Interceptors, Hooks, and Extensibility
 
-### 341. Определить ContainerPlugin interface
+### 341. Define ContainerPlugin Interface
 
-Позволить расширять registration, resolution и lifecycle phases.
+Allow extension of registration, resolution, and lifecycle phases.
 
-### 342. Реализовать registration hook
+### 342. Implement Registration Hook
 
-Вызывать plugin при добавлении normalized provider.
+Call a plugin when a normalized provider is added.
 
-### 343. Реализовать before-resolve hook
+### 343. Implement Before-resolve Hook
 
-Передавать token и resolution context до lookup.
+Pass the token and resolution context before lookup.
 
-### 344. Реализовать after-resolve hook
+### 344. Implement After-resolve Hook
 
-Передавать resolved instance metadata без обязательного раскрытия value.
+Pass resolved instance metadata without necessarily exposing the value.
 
-### 345. Реализовать before-create hook
+### 345. Implement Before-create Hook
 
-Позволить instrumentation измерять factory или constructor invocation.
+Allow instrumentation to measure factory or constructor invocation.
 
-### 346. Реализовать after-create hook
+### 346. Implement After-create Hook
 
-Публиковать duration и provider status.
+Publish duration and provider status.
 
-### 347. Реализовать resolution middleware
+### 347. Implement Resolution Middleware
 
-Создать controlled chain around provider creation.
+Create a controlled chain around provider creation.
 
-### 348. Ограничить middleware mutation
+### 348. Limit Middleware Mutation
 
-Не позволять plugin незаметно изменять token identity и scope rules.
+Do not allow a plugin to silently change token identity and scope rules.
 
-### 349. Реализовать provider transformer
+### 349. Implement Provider Transformer
 
-Позволить build-time или bootstrap-time transformation descriptor.
+Allow build-time or bootstrap-time descriptor transformation.
 
-### 350. Реализовать instance decorator
+### 350. Implement Instance Decorator
 
-Оборачивать instance через explicit provider configuration.
+Wrap an instance through explicit provider configuration.
 
-### 351. Исследовать method interception
+### 351. Research Method Interception
 
-Создать optional Proxy-based AOP experiment.
+Create an optional Proxy-based AOP experiment.
 
-### 352. Реализовать logging interceptor example
+### 352. Implement Logging Interceptor Example
 
-Логировать method duration без изменения business class.
+Log method duration without changing the business class.
 
-### 353. Реализовать transaction interceptor example
+### 353. Implement Transaction Interceptor Example
 
-Открывать transaction вокруг annotated application method.
+Open a transaction around an annotated application method.
 
-### 354. Зафиксировать ограничения AOP
+### 354. Record AOP Limitations
 
-Документировать private fields, identity, stack traces и performance overhead.
+Document private fields, identity, stack traces, and performance overhead.
 
-### 355. Реализовать plugin ordering
+### 355. Implement Plugin Ordering
 
-Использовать priority и deterministic sequence.
+Use priority and a deterministic sequence.
 
-### 356. Реализовать plugin isolation
+### 356. Implement Plugin Isolation
 
-Не позволять failure необязательного diagnostic plugin разрушать resolution.
+Do not allow failure of an optional diagnostic plugin to break resolution.
 
-### 357. Реализовать critical plugin mode
+### 357. Implement Critical Plugin Mode
 
-Останавливать container при failure security или validation plugin.
+Stop the container on failure of a security or validation plugin.
 
-### 358. Реализовать plugin disposal
+### 358. Implement Plugin Disposal
 
-Освобождать resources extensions вместе с container.
+Release extension resources together with the container.
 
-### 359. Создать OpenTelemetry plugin
+### 359. Create OpenTelemetry Plugin
 
-Трассировать provider resolution и initialization.
+Trace provider resolution and initialization.
 
-### 360. Тестировать plugin API
+### 360. Test Plugin API
 
-Проверить ordering, errors, async hooks и disposal.
+Verify ordering, errors, async hooks, and disposal.
 
-## 19. Testing utilities
+## 19. Testing Utilities
 
-### 361. Создать TestContainer
+### 361. Create TestContainer
 
-Добавить упрощённую configuration и automatic cleanup.
+Add simplified configuration and automatic cleanup.
 
-### 362. Реализовать provider override
+### 362. Implement Provider Override
 
-Заменять production dependency test double.
+Replace a production dependency with a test double.
 
-### 363. Реализовать value stub
+### 363. Implement Value Stub
 
-Регистрировать plain object как typed test dependency.
+Register a plain object as a typed test dependency.
 
-### 364. Реализовать factory spy
+### 364. Implement Factory Spy
 
-Отслеживать количество и порядок provider creation.
+Track the number and order of provider creation.
 
-### 365. Реализовать constructor spy
+### 365. Implement Constructor Spy
 
-Проверять lifecycle без изменения production class.
+Check lifecycle without changing the production class.
 
-### 366. Реализовать resolution assertions
+### 366. Implement Resolution Assertions
 
-Проверять, что token разрешается ожидаемым implementation.
+Check that a token resolves to the expected implementation.
 
-### 367. Реализовать scope assertions
+### 367. Implement Scope Assertions
 
-Проверять equality instances между resolutions и scopes.
+Check instance equality between resolutions and scopes.
 
-### 368. Реализовать dependency assertions
+### 368. Implement Dependency Assertions
 
-Проверять direct и transitive graph edges.
+Check direct and transitive graph edges.
 
-### 369. Реализовать no-cycle assertion
+### 369. Implement No-cycle Assertion
 
-Проверять отсутствие circular dependencies.
+Check for absence of circular dependencies.
 
-### 370. Реализовать no-captive-dependency assertion
+### 370. Implement No-captive-dependency Assertion
 
-Проверять lifecycle compatibility.
+Check lifecycle compatibility.
 
-### 371. Реализовать module-boundary assertion
+### 371. Implement Module-boundary Assertion
 
-Проверять imports, exports и private providers.
+Check imports, exports, and private providers.
 
-### 372. Реализовать disposal assertions
+### 372. Implement Disposal Assertions
 
-Проверять вызовы cleanup hooks.
+Check cleanup hook calls.
 
-### 373. Реализовать snapshot graph testing
+### 373. Implement Snapshot Graph Testing
 
-Сравнивать dependency graph с зафиксированным snapshot.
+Compare the dependency graph with a stored snapshot.
 
-### 374. Реализовать isolated scope helper
+### 374. Implement Isolated Scope Helper
 
-Автоматически создавать и закрывать request или job scope.
+Automatically create and close a request or job scope.
 
-### 375. Реализовать fake clock provider
+### 375. Implement Fake Clock Provider
 
-Тестировать lifecycle timeout и expiration.
+Test lifecycle timeout and expiration.
 
-### 376. Реализовать fake configuration provider
+### 376. Implement Fake Configuration Provider
 
-Передавать deterministic environment values.
+Pass deterministic environment values.
 
-### 377. Реализовать auto-mock experiment
+### 377. Implement Auto-mock Experiment
 
-Генерировать basic mocks для отсутствующих dependencies.
+Generate basic mocks for missing dependencies.
 
-### 378. Ограничить auto-mocking
+### 378. Limit Auto-mocking
 
-Не скрывать missing critical providers по умолчанию.
+Do not hide missing critical providers by default.
 
-### 379. Реализовать test leak detection
+### 379. Implement Test Leak Detection
 
-Проверять незакрытые scopes и undisposed instances после test.
+Check for unclosed scopes and undisposed instances after a test.
 
-### 380. Документировать testing patterns
+### 380. Document Testing Patterns
 
-Показать unit tests без container и integration tests с TestContainer.
+Show unit tests without a container and integration tests with TestContainer.
 
-## 20. Полный test suite и корректность
+## 20. Full Test Suite and Correctness
 
-### 381. Создать tests token model
+### 381. Create Token Model Tests
 
-Проверить identity, aliases, optional, lazy и multi-tokens.
+Verify identity, aliases, optional, lazy, and multi-tokens.
 
-### 382. Создать tests provider registration
+### 382. Create Provider Registration Tests
 
-Проверить все provider kinds, overrides и invalid descriptors.
+Verify all provider kinds, overrides, and invalid descriptors.
 
-### 383. Создать tests synchronous resolution
+### 383. Create Synchronous Resolution Tests
 
-Проверить class, value, factory и alias graphs.
+Verify class, value, factory, and alias graphs.
 
-### 384. Создать tests asynchronous resolution
+### 384. Create Asynchronous Resolution Tests
 
-Проверить async factories, concurrent calls и rejected initialization.
+Verify async factories, concurrent calls, and rejected initialization.
 
-### 385. Создать tests singleton scope
+### 385. Create Singleton Scope Tests
 
-Проверить единичное создание и cache reset.
+Verify single creation and cache reset.
 
-### 386. Создать tests transient scope
+### 386. Create Transient Scope Tests
 
-Проверить новое дерево instances при каждом resolution.
+Verify a new tree of instances on every resolution.
 
-### 387. Создать tests request scope
+### 387. Create Request Scope Tests
 
-Проверить reuse внутри scope и isolation между scopes.
+Verify reuse inside a scope and isolation between scopes.
 
-### 388. Создать tests resolution scope
+### 388. Create Resolution Scope Tests
 
-Проверить diamond dependency graph.
+Verify a diamond dependency graph.
 
-### 389. Создать tests custom scopes
+### 389. Create Custom Scope Tests
 
-Проверить user-defined cache и disposal strategy.
+Verify user-defined cache and disposal strategy.
 
-### 390. Создать tests circular dependencies
+### 390. Create Circular Dependency Tests
 
-Проверить direct, indirect, alias и module cycles.
+Verify direct, indirect, alias, and module cycles.
 
-### 391. Создать tests decorator API
+### 391. Create Decorator API Tests
 
-Проверить metadata, inheritance и explicit token overrides.
+Verify metadata, inheritance, and explicit token overrides.
 
-### 392. Создать tests module system
+### 392. Create Module System Tests
 
-Проверить imports, exports, private providers и dynamic configuration.
+Verify imports, exports, private providers, and dynamic configuration.
 
-### 393. Создать tests child containers
+### 393. Create Child Container Tests
 
-Проверить overrides, singleton ownership и hierarchy disposal.
+Verify overrides, singleton ownership, and hierarchy disposal.
 
-### 394. Создать tests lifecycle
+### 394. Create Lifecycle Tests
 
-Проверить initialization, rollback, disposal и AggregateError.
+Verify initialization, rollback, disposal, and AggregateError.
 
-### 395. Создать tests graph validation
+### 395. Create Graph Validation Tests
 
-Проверить missing providers, ambiguity и captive dependencies.
+Verify missing providers, ambiguity, and captive dependencies.
 
-### 396. Создать concurrency tests
+### 396. Create Concurrency Tests
 
-Выполнять parallel resolution singleton, async и scoped providers.
+Perform parallel resolution of singleton, async, and scoped providers.
 
-### 397. Создать fuzz tests provider graphs
+### 397. Create Provider Graph Fuzz Tests
 
-Генерировать случайные acyclic и cyclic dependency graphs.
+Generate random acyclic and cyclic dependency graphs.
 
-### 398. Создать property-based tests
+### 398. Create Property-based Tests
 
-Проверять invariants caching, disposal order и graph resolution.
+Verify invariants of caching, disposal order, and graph resolution.
 
-### 399. Создать memory leak tests
+### 399. Create Memory Leak Tests
 
-Проверять освобождение transient graphs и disposed scopes через WeakRef.
+Check release of transient graphs and disposed scopes through WeakRef.
 
-### 400. Создать compatibility tests
+### 400. Create Compatibility Tests
 
-Проверить поддерживаемые Node.js и TypeScript versions.
+Verify supported Node.js and TypeScript versions.
 
-## 21. Performance, integrations и production-style сценарии
+## 21. Performance, Integrations, and Production-style Scenarios
 
-### 401. Определить performance targets
+### 401. Define Performance Targets
 
-Зафиксировать registration time, bootstrap time, resolve latency и memory overhead.
+Record registration time, bootstrap time, resolve latency, and memory overhead.
 
-### 402. Создать direct construction baseline
+### 402. Create Direct Construction Baseline
 
-Сравнить container resolution с ручным `new`.
+Compare container resolution with manual `new`.
 
-### 403. Создать singleton resolution benchmark
+### 403. Create Singleton Resolution Benchmark
 
-Измерить cached lookup по class, symbol и InjectionToken.
+Measure cached lookup by class, symbol, and InjectionToken.
 
-### 404. Создать transient graph benchmark
+### 404. Create Transient Graph Benchmark
 
-Измерить создание глубокого object graph.
+Measure creation of a deep object graph.
 
-### 405. Создать decorator metadata benchmark
+### 405. Create Decorator Metadata Benchmark
 
-Сравнить reflection-based и explicit dependency resolution.
+Compare reflection-based and explicit dependency resolution.
 
-### 406. Создать async provider benchmark
+### 406. Create Async Provider Benchmark
 
-Измерить concurrent singleton initialization.
+Measure concurrent singleton initialization.
 
-### 407. Создать request scope benchmark
+### 407. Create Request Scope Benchmark
 
-Измерить создание и disposal scope на HTTP request.
+Measure scope creation and disposal per HTTP request.
 
-### 408. Создать large graph benchmark
+### 408. Create Large Graph Benchmark
 
-Проверить validation и bootstrap тысяч providers.
+Test validation and bootstrap of thousands of providers.
 
-### 409. Оптимизировать registry lookup
+### 409. Optimize Registry Lookup
 
-Сравнить Map structures, normalized descriptors и alias indirection.
+Compare Map structures, normalized descriptors, and alias indirection.
 
-### 410. Оптимизировать metadata cache
+### 410. Optimize Metadata Cache
 
-Не выполнять повторное reflection чтение constructor dependencies.
+Do not repeatedly read constructor dependency metadata through reflection.
 
-### 411. Оптимизировать graph validation
+### 411. Optimize Graph Validation
 
-Кэшировать validated graph до изменения registrations.
+Cache the validated graph until registrations change.
 
-### 412. Оптимизировать error path allocation
+### 412. Optimize Error Path Allocation
 
-Не создавать тяжёлые diagnostic objects при успешном resolution.
+Do not create heavy diagnostic objects during successful resolution.
 
-### 413. Реализовать Express integration
+### 413. Implement Express Integration
 
-Создавать request scope middleware и освобождать его после response.
+Create request-scope middleware and release it after the response.
 
-### 414. Реализовать HTTP server example
+### 414. Implement HTTP Server Example
 
-Собрать controller, service, repository, logger и request context через Injectra.
+Assemble controller, service, repository, logger, and request context through Injectra.
 
-### 415. Реализовать worker application example
+### 415. Implement Worker Application Example
 
-Создавать job scope для каждого background task.
+Create a job scope for each background task.
 
-### 416. Реализовать Hexagonal Architecture example
+### 416. Implement Hexagonal Architecture Example
 
-Связать application ports с PostgreSQL, Redis и messaging adapters.
+Bind application ports to PostgreSQL, Redis, and messaging adapters.
 
-### 417. Реализовать module replacement scenario
+### 417. Implement Module Replacement Scenario
 
-Переключать in-memory и production adapters без изменения application layer.
+Switch between in-memory and production adapters without changing the application layer.
 
-### 418. Реализовать production shutdown scenario
+### 418. Implement Production Shutdown Scenario
 
-Корректно завершать HTTP server, database pool, Redis и message consumers.
+Correctly shut down the HTTP server, database pool, Redis, and message consumers.
 
-### 419. Создать architecture documentation
+### 419. Create Architecture Documentation
 
-Добавить C4 diagrams, dependency graph, lifecycle diagrams, ADR и public API reference.
+Add C4 diagrams, dependency graph, lifecycle diagrams, ADR, and public API reference.
 
-### 420. Подготовить production readiness checklist
+### 420. Prepare Production Readiness Checklist
 
-Зафиксировать требования к API stability, scopes, async initialization, diagnostics, performance, testing, compatibility и lifecycle safety.
+Record requirements for API stability, scopes, async initialization, diagnostics, performance, testing, compatibility, and lifecycle safety.
