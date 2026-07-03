@@ -1,6 +1,6 @@
 {
   "name": "injectra",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A custom dependency injection framework for Node.js and TypeScript, covering explicit providers, decorator-based registration, tokens, scopes, singleton and transient lifecycles, dependency graph resolution, circular dependency detection, and container testing",
   "private": false,
   "main": "./dist/index.js",
