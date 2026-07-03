@@ -1,0 +1,55 @@
+{
+  "name": "injectra",
+  "version": "1.0.0",
+  "description": "A custom dependency injection framework for Node.js and TypeScript, covering explicit providers, decorator-based registration, tokens, scopes, singleton and transient lifecycles, dependency graph resolution, circular dependency detection, and container testing",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "verify": "./scripts/push-verify.sh",
+    "prepare": "husky",
+    "source-code:generate": "node scripts/generate-project-source.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AveryOn/payex-billing-system.git"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AveryOn/injectra-di-framework/issues"
+  },
+  "homepage": "https://github.com/AveryOn/injectra-di-framework#readme",
+  "dependencies": {
+    "reflect-metadata": "^0.2.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@types/node": "^26.0.0",
+    "@vitest/coverage-v8": "^4.1.9",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-typescript": "^4.4.5",
+    "eslint-plugin-import": "^2.32.0",
+    "husky": "^9.1.7",
+    "prettier": "^3.8.4",
+    "tsup": "^8.5.1",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.61.1",
+    "vitest": "^4.1.9"
+  }
+}
