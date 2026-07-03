@@ -1,7 +1,9 @@
 #!/bin/sh
 
+set -e
+
 DATE=$(date +"%Y-%m-%d-%s")
-TEXT="$1"
+TEXT="${*:-update}"
 
 git add .
 git commit -m "[$DATE] $TEXT"
