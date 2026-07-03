@@ -32,8 +32,12 @@
     "test:coverage": "vitest run --coverage",
     "verify": "./scripts/push-verify.sh",
     "prepare": "husky",
-    "pkg-patch": "npm version patch",
-    "pkg-upload": "npm run verify && npm run pkg-patch && npm publish",
+    "version:patch": "npm version patch",
+    "version:minor": "npm version minor",
+    "version:major": "npm version major",
+    "pkg-upload:patch": "npm run verify && npm run version:patch && npm publish",
+    "pkg-upload:minor": "npm run verify && npm run version:minor && npm publish",
+    "pkg-upload:major": "npm run verify && npm run version:major && npm publish",
     "source-code:generate": "node scripts/generate-project-source.mjs"
   },
   "repository": {
