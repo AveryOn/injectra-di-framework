@@ -32,7 +32,8 @@
     "test:coverage": "vitest run --coverage",
     "verify": "./scripts/push-verify.sh",
     "prepare": "husky",
-    "prepublishOnly": "npm run verify && npm run build",
+    "pkg-patch": "npm version patch",
+    "pkg-upload": "npm run verify && npm run pkg-patch && npm publish",
     "source-code:generate": "node scripts/generate-project-source.mjs"
   },
   "repository": {
