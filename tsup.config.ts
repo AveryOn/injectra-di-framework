@@ -13,6 +13,8 @@ export default defineConfig({
   splitting: false,
   treeshake: true,
 
+  dts: true,
+
   clean: true,
   sourcemap: true,
   minify: false,
