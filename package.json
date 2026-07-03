@@ -1,8 +1,24 @@
 {
   "name": "injectra",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A custom dependency injection framework for Node.js and TypeScript, covering explicit providers, decorator-based registration, tokens, scopes, singleton and transient lifecycles, dependency graph resolution, circular dependency detection, and container testing",
-  "main": "index.js",
+  "private": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "reflect-metadata"
+  ],
   "type": "module",
   "scripts": {
     "build": "tsup",
@@ -16,19 +32,27 @@
     "test:coverage": "vitest run --coverage",
     "verify": "./scripts/push-verify.sh",
     "prepare": "husky",
+    "prepublishOnly": "npm run verify && npm run build",
     "source-code:generate": "node scripts/generate-project-source.mjs"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AveryOn/payex-billing-system.git"
+    "url": "git+https://github.com/AveryOn/injectra-di-framework.git"
   },
-  "private": true,
   "engines": {
     "node": ">=24.0.0"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "dependency-injection",
+    "di",
+    "typescript",
+    "nodejs",
+    "decorators",
+    "ioc",
+    "container"
+  ],
+  "author": "AveryOn",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/AveryOn/injectra-di-framework/issues"
   },
